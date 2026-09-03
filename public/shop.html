@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>فروشگاه — کافه دانه</title>
+<meta name="description" content="فروشگاه کافه دانه: قهوه‌های تخصصی، دانه برشت هفتگی، دسرها و تجهیزات — سفارش آنلاین با تحویل حضوری یا ارسال." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0a07'/%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' transform='rotate(24 16 16)' fill='none' stroke='%23d9a253' stroke-width='2'/%3E%3Cpath d='M13.4 6.5c5.5 5-2.4 10 4.2 19' stroke='%23d9a253' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="shop">
+<a class="skip-link" href="#shop-content">پرش به فروشگاه</a>
+
+<header class="site-nav">
+  <a class="brand" href="/" aria-label="کافه دانه — خانه">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <ellipse cx="16" cy="16" rx="8.5" ry="12" transform="rotate(24 16 16)" stroke="#d9a253" stroke-width="1.8"/>
+      <path d="M13.4 5.5c5.5 5.5-2.4 11 4.2 21" stroke="#d9a253" stroke-width="1.8"/>
+    </svg>
+    <span>
+      <span class="brand-name">کافه دانه</span>
+      <span class="brand-latin">Daneh Coffee</span>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="ناوبری اصلی">
+    <a href="/" data-nav="home">خانه</a>
+    <a href="/shop" data-nav="shop" aria-current="page">فروشگاه</a>
+    <a href="/about" data-nav="about">درباره ما</a>
+    <a href="/reservation" data-nav="reservation" class="nav-cta">رزرو میز</a>
+    <a href="/cart" class="nav-cart" aria-label="سبد خرید">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 3h2l2.4 12.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/></svg>
+      <b id="cart-count" class="cart-badge" hidden></b>
+    </a>
+  </nav>
+</header>
+
+<main class="shell" id="shop-content">
+  <section class="page-hero">
+    <p class="crumb">کافه دانه / فروشگاه</p>
+    <h1>فروشگاه</h1>
+    <p class="lede">
+      قهوه‌های بارِ کافه، دانه‌های برشت هفتگی، دسرهای خانگی و تجهیزات — همان چیزی که پشت میز دانه می‌نوشید، حالا سفارش‌دادنی است.
+      تحویل حضوری رایگان؛ ارسال با هزینهٔ ثابت.
+    </p>
+  </section>
+
+  <div class="chips" id="shop-chips" role="group" aria-label="فیلتر دسته‌بندی">
+    <!-- چیپ‌های دسته با JS -->
+  </div>
+
+  <div class="product-grid" id="shop-grid">
+    <div class="admin-loading">در حال چیدن قفسه‌ها…</div>
+  </div>
+
+  <p style="margin-top: var(--space-xl); font-size: 0.833rem; color: var(--ink-3);">
+    قیمت‌ها به تومان است. محصولی که می‌خواهید تمام شده؟ در یادداشت سفارش بنویسید تا در اولین برشت بعدی خبر بدهیم.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h2 class="kicker">کافه <span class="gold">دانه.</span></h2>
+      <p class="colophon" id="footer-colophon"></p>
+    </div>
+    <div>
+      <h4>صفحه‌ها</h4>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/shop">فروشگاه</a></li>
+        <li><a href="/cart">سبد خرید</a></li>
+        <li><a href="/reservation">رزرو میز</a></li>
+        <li><a href="/about">درباره و آدرس</a></li>
+        <li><a href="/admin">دفتر مدیریت <small>محصولات، سفارش‌ها، رزروها</small></a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تماس</h4>
+      <ul id="footer-contact"></ul>
+    </div>
+    <div>
+      <h4>ساعت کاری</h4>
+      <ul id="footer-hours"></ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span><b>کافه دانه</b> · تهران · <span id="legal-year"></span></span>
+    <span>شب، اسپرسو و کمی طلا</span>
+  </div>
+</footer>
+
+<script src="/js/site-data.js"></script>
+<script src="/js/jalali.js"></script>
+<script src="/js/cart-core.js"></script>
+<script src="/js/site-common.js"></script>
+<script src="/js/shop.js"></script>
+</body>
+</html>

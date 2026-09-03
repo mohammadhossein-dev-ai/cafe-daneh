@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>کافه دانه — قهوه تخصصی در شب | تجربهٔ سه‌بعدی</title>
+<meta name="description" content="کافه دانه؛ یک کافهٔ دیجیتال تاریک و لوکس. با اسکرول دور فنجان سه‌بعدی بچرخید، بخار قهوه را دنبال کنید و وارد منو و رزرو میز شوید." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0a07'/%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' transform='rotate(24 16 16)' fill='none' stroke='%23d9a253' stroke-width='2'/%3E%3Cpath d='M13.4 6.5c5.5 5-2.4 10 4.2 19' stroke='%23d9a253' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/styles.css" />
+<!--
+  بازطراحی «Night Espresso» — بریف و توکن‌ها در کامنت styles.css
+  signature: فنجان سه‌بعدی (Three.js) + روایت اسکرولی (GSAP ScrollTrigger)
+  fallback: بدون WebGL/GSAP → no-fx (همه‌چیز ایستا و خوانا)
+-->
+</head>
+<body data-page="home">
+<a class="skip-link" href="#after-story">پرش به اطلاعات کافه</a>
+
+<header class="site-nav" data-od-id="topbar">
+  <a class="brand" href="/" aria-label="کافه دانه — خانه">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <ellipse cx="16" cy="16" rx="8.5" ry="12" transform="rotate(24 16 16)" stroke="#d9a253" stroke-width="1.8"/>
+      <path d="M13.4 5.5c5.5 5.5-2.4 11 4.2 21" stroke="#d9a253" stroke-width="1.8"/>
+    </svg>
+    <span>
+      <span class="brand-name">کافه دانه</span>
+      <span class="brand-latin">Daneh Coffee</span>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="ناوبری اصلی">
+    <a href="/" data-nav="home" aria-current="page">خانه</a>
+    <a href="/shop" data-nav="shop">فروشگاه</a>
+    <a href="/about" data-nav="about">درباره ما</a>
+    <a href="/reservation" data-nav="reservation" class="nav-cta">رزرو میز</a>
+    <a href="/cart" class="nav-cart" aria-label="سبد خرید">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 3h2l2.4 12.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/></svg>
+      <b id="cart-count" class="cart-badge" hidden></b>
+    </a>
+  </nav>
+</header>
+
+<main>
+  <div class="story" id="story">
+    <canvas id="scene" aria-hidden="true"></canvas>
+
+    <!-- فصل ۰: هیرو -->
+    <section class="chapter" data-ch="hero" data-align="start" aria-label="خوش آمدید">
+      <div class="chapter-block hero-block">
+        <p class="hero-latin">Daneh Coffee · Specialty · Tehran</p>
+        <h1 class="hero-wordmark">کافه <span class="gold">دانه</span></h1>
+        <p class="hero-tagline">یک کافهٔ دیجیتال تاریک و لوکس؛ این‌جا به‌جای دیدنِ سایت، داخل قهوه قدم می‌زنید. اسکرول کنید — فنجان راهنمای شماست.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/reservation">رزرو میز</a>
+          <a class="btn btn-secondary" href="/menu">مشاهدهٔ منو</a>
+        </div>
+        <span class="scroll-hint" aria-hidden="true">اسکرول<span class="line"></span></span>
+      </div>
+    </section>
+
+    <!-- فصل ۱: دانه -->
+    <section class="chapter" data-ch="beans" data-align="end" aria-label="دانه">
+      <div class="chapter-block">
+        <p class="num">فصل ۰۱ — دانه</p>
+        <h2>همه‌چیز از یک دانه شروع می‌شود.</h2>
+        <p>
+          دانه را از برشته‌کارهای کوچک و مستقل می‌خریم، هر هفته برشت تازه می‌رسد و
+          هیچ فنجانی قبل از بو کردن، دم نمی‌شود. اینجا روی میز، چند دانهٔ همین هفته است.
+        </p>
+      </div>
+    </section>
+
+    <!-- فصل ۲: دم‌آوری -->
+    <section class="chapter" data-ch="brew" data-align="start" aria-label="دم‌آوری">
+      <div class="chapter-block">
+        <p class="num">فصل ۰۲ — دم‌آوری</p>
+        <h2>بخار، امضای فنجانِ درست است.</h2>
+        <p>
+          آب ۹۲ درجه، تایمینگ دقیق و عجله‌ای که نیست؛ هر روش دم‌آوری برای خودش
+          ریتم دارد. از اسپرسوی متراکم تا V60ِ روشن — همه از هشت صبح تا یازده شب.
+        </p>
+      </div>
+    </section>
+
+    <!-- فصل ۳: فروشگاه -->
+    <section class="chapter" data-ch="shop" data-align="end" aria-label="تیزر فروشگاه">
+      <div class="chapter-block">
+        <p class="num">فصل ۰۳ — فروشگاه</p>
+        <h2>طعم کافه دانه را با خودت ببر.</h2>
+        <ul class="menu-teaser" id="shop-teaser" aria-label="محصولات منتخب">
+          <!-- با جاوااسکریپت از API محصولات پر می‌شود -->
+        </ul>
+        <p style="margin-top: var(--space-m)"><a class="text-link" href="/shop">مشاهده فروشگاه ←</a></p>
+      </div>
+    </section>
+
+    <!-- فصل ۴: رزرو -->
+    <section class="chapter" data-ch="cta" aria-label="رزرو میز">
+      <div class="chapter-block" style="text-align:center; margin: 0 auto;">
+        <p class="num" style="text-align:center">فصل ۰۴ — میز شما</p>
+        <h2>جای گرمی برایتان نگه داشته‌ایم.</h2>
+        <p style="margin-inline:auto">تاریخ و ساعت را بگویید؛ بقیه‌اش با ما. بدون پیش‌پرداخت، با همان حسِ نشستن پشت شیشهٔ ولیعصر.</p>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="btn btn-primary" href="/reservation">رزرو میز</a>
+          <a class="btn btn-secondary" href="/about">آدرس و ساعت کاری</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- نوار اطلاعات بعد از روایت -->
+  <section class="after-story" id="after-story">
+    <div class="inner">
+      <div>
+        <h3>پیدا کردن ما</h3>
+        <p id="home-address">—</p>
+        <p style="margin-top: var(--space-2xs)"><a class="text-link" href="/about">آدرس کامل، نقشه و تماس ←</a></p>
+      </div>
+      <div class="meta">
+        <span><b>ساعت کاری:</b> <span id="home-hours">—</span></span>
+        <span><b>تلفن:</b> <bdi dir="ltr" id="home-phone">—</bdi></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h2 class="kicker">کافه <span class="gold">دانه.</span></h2>
+      <p class="colophon" id="footer-colophon">کافه‌ای کوچک برای قهوهٔ جدی و نشستن‌های طولانی.</p>
+    </div>
+    <div>
+      <h4>صفحه‌ها</h4>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/shop">فروشگاه</a></li>
+        <li><a href="/reservation">رزرو میز</a></li>
+        <li><a href="/about">درباره و آدرس</a></li>
+        <li><a href="/admin">دفتر رزروها <small>صفحهٔ مدیریت کافه</small></a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تماس</h4>
+      <ul id="footer-contact"></ul>
+    </div>
+    <div>
+      <h4>ساعت کاری</h4>
+      <ul id="footer-hours"></ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span><b>کافه دانه</b> · تهران · <span id="legal-year"></span></span>
+    <span>شب، اسپرسو و کمی طلا</span>
+  </div>
+</footer>
+
+<script src="/js/site-data.js"></script>
+<script src="/js/jalali.js"></script>
+<script src="/js/cart-core.js"></script>
+<script src="/js/site-common.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="/js/home.js"></script>
+<script type="module" src="/js/home-scene.js"></script>
+</body>
+</html>

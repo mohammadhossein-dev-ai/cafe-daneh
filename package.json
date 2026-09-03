@@ -1,0 +1,18 @@
+{
+  "name": "cafe-daneh",
+  "version": "2.1.0",
+  "private": true,
+  "description": "کافه دانه — online coffee shop & table booking (zero-dependency Node.js) / Daneh Coffee online shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/test-cart.js && node scripts/smoke-test.js && node scripts/test-shop.js",
+    "test:shop": "node scripts/test-shop.js",
+    "test:cart": "node scripts/test-cart.js",
+    "test:booking": "node scripts/smoke-test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>محصول — کافه دانه</title>
+<meta name="description" content="جزئیات محصول فروشگاه کافه دانه؛ گزینه‌ها، قیمت و افزودن به سبد خرید." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0a07'/%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' transform='rotate(24 16 16)' fill='none' stroke='%23d9a253' stroke-width='2'/%3E%3Cpath d='M13.4 6.5c5.5 5-2.4 10 4.2 19' stroke='%23d9a253' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="product">
+<a class="skip-link" href="#product-main">پرش به محتوای محصول</a>
+
+<header class="site-nav">
+  <a class="brand" href="/" aria-label="کافه دانه — خانه">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <ellipse cx="16" cy="16" rx="8.5" ry="12" transform="rotate(24 16 16)" stroke="#d9a253" stroke-width="1.8"/>
+      <path d="M13.4 5.5c5.5 5.5-2.4 11 4.2 21" stroke="#d9a253" stroke-width="1.8"/>
+    </svg>
+    <span>
+      <span class="brand-name">کافه دانه</span>
+      <span class="brand-latin">Daneh Coffee</span>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="ناوبری اصلی">
+    <a href="/" data-nav="home">خانه</a>
+    <a href="/shop" data-nav="shop">فروشگاه</a>
+    <a href="/about" data-nav="about">درباره ما</a>
+    <a href="/reservation" data-nav="reservation" class="nav-cta">رزرو میز</a>
+    <a href="/cart" class="nav-cart" aria-label="سبد خرید">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 3h2l2.4 12.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/></svg>
+      <b id="cart-count" class="cart-badge" hidden></b>
+    </a>
+  </nav>
+</header>
+
+<main class="shell" id="product-main">
+  <section class="page-hero" style="margin-bottom: var(--space-l);">
+    <p class="crumb"><a href="/shop" style="color: inherit; border-bottom: none;">فروشگاه</a> / <span id="p-crumb-name">محصول</span></p>
+    <h1 id="p-name">در حال بارگذاری…</h1>
+    <p class="lede" id="p-desc"></p>
+  </section>
+
+  <div class="product-hero" id="product-hero" hidden>
+    <div class="product-visual" id="p-visual">
+      <!-- بوم سه‌بعدی یا آیکون گرافیکی اینجا می‌نشیند -->
+    </div>
+    <div>
+      <p class="tile-cat" id="p-cat"></p>
+      <p style="font-size: var(--step-3); color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; margin: var(--space-2xs) 0;">
+        <span id="p-price"></span><span style="font-size: 0.6875rem; color: var(--ink-3); font-weight: 400;"> تومان</span>
+      </p>
+      <p class="add-confirm" id="p-stock" style="color: var(--ink-3);"></p>
+
+      <div id="p-options-wrap" style="margin-top: var(--space-m);" hidden>
+        <p style="font-size: var(--step--1); font-weight: 600; color: var(--ink-2); margin-bottom: var(--space-3xs);">گزینه:</p>
+        <div class="option-pills" id="p-options" role="radiogroup" aria-label="گزینه‌های محصول"></div>
+      </div>
+
+      <div style="margin-top: var(--space-m); display: flex; align-items: center; gap: var(--space-s); flex-wrap: wrap;">
+        <div class="qty-stepper" aria-label="تعداد">
+          <button type="button" id="qty-minus" aria-label="کاهش تعداد">−</button>
+          <input type="text" inputmode="numeric" id="qty-input" value="۱" aria-label="تعداد" />
+          <button type="button" id="qty-plus" aria-label="افزایش تعداد">+</button>
+        </div>
+        <button type="button" class="btn btn-primary" id="add-btn">افزودن به سبد</button>
+      </div>
+      <p class="add-confirm" id="add-confirm" role="status" aria-live="polite" style="margin-top: var(--space-2xs);"></p>
+
+      <div style="margin-top: var(--space-xl); border-top: 1px solid var(--line); padding-top: var(--space-m);">
+        <h2 style="font-family: var(--font-display); font-weight: 400; font-size: var(--step-2); color: var(--ink); margin-bottom: var(--space-2xs);">دربارهٔ این محصول</h2>
+        <p style="color: var(--ink-2); line-height: 2;" id="p-full"></p>
+      </div>
+
+      <p style="margin-top: var(--space-l);"><a class="text-link" href="/cart">رفتن به سبد خرید ←</a></p>
+    </div>
+  </div>
+
+  <div class="admin-empty" id="p-error" hidden>
+    <p class="big">محصول پیدا نشد.</p>
+    <p>ممکن است حذف شده یا آدرس اشتباه باشد. <a class="text-link" href="/shop">بازگشت به فروشگاه</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h2 class="kicker">کافه <span class="gold">دانه.</span></h2>
+      <p class="colophon" id="footer-colophon"></p>
+    </div>
+    <div>
+      <h4>صفحه‌ها</h4>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/shop">فروشگاه</a></li>
+        <li><a href="/cart">سبد خرید</a></li>
+        <li><a href="/reservation">رزرو میز</a></li>
+        <li><a href="/about">درباره و آدرس</a></li>
+        <li><a href="/admin">دفتر مدیریت</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تماس</h4>
+      <ul id="footer-contact"></ul>
+    </div>
+    <div>
+      <h4>ساعت کاری</h4>
+      <ul id="footer-hours"></ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span><b>کافه دانه</b> · تهران · <span id="legal-year"></span></span>
+    <span>شب، اسپرسو و کمی طلا</span>
+  </div>
+</footer>
+
+<script src="/js/site-data.js"></script>
+<script src="/js/jalali.js"></script>
+<script src="/js/cart-core.js"></script>
+<script src="/js/site-common.js"></script>
+<script src="/js/product.js"></script>
+</body>
+</html>

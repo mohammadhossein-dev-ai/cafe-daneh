@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>رزرو میز — کافه دانه</title>
+<meta name="description" content="رزرو آنلاین میز کافه دانه؛ نام، موبایل، تاریخ و ساعت را بگویید — بدون پیش‌پرداخت، با شمارهٔ پیگیری." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0a07'/%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' transform='rotate(24 16 16)' fill='none' stroke='%23d9a253' stroke-width='2'/%3E%3Cpath d='M13.4 6.5c5.5 5-2.4 10 4.2 19' stroke='%23d9a253' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="reservation">
+<a class="skip-link" href="#booking-section">پرش به فرم رزرو</a>
+
+<header class="site-nav" data-od-id="topbar-reservation">
+  <a class="brand" href="/" aria-label="کافه دانه — خانه">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <ellipse cx="16" cy="16" rx="8.5" ry="12" transform="rotate(24 16 16)" stroke="#d9a253" stroke-width="1.8"/>
+      <path d="M13.4 5.5c5.5 5.5-2.4 11 4.2 21" stroke="#d9a253" stroke-width="1.8"/>
+    </svg>
+    <span>
+      <span class="brand-name">کافه دانه</span>
+      <span class="brand-latin">Daneh Coffee</span>
+    </span>
+  </a>
+  <nav class="nav-links" aria-label="ناوبری اصلی">
+    <a href="/" data-nav="home">خانه</a>
+    <a href="/shop" data-nav="shop">فروشگاه</a>
+    <a href="/about" data-nav="about">درباره ما</a>
+    <a href="/reservation" data-nav="reservation" class="nav-cta" aria-current="page">رزرو میز</a>
+    <a href="/cart" class="nav-cart" aria-label="سبد خرید">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 3h2l2.4 12.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6"/></svg>
+      <b id="cart-count" class="cart-badge" hidden></b>
+    </a>
+  </nav>
+</header>
+
+<main class="shell" id="booking-section">
+  <section class="page-hero">
+    <p class="crumb">کافه دانه / رزرو</p>
+    <h1>رزرو میز</h1>
+    <p class="lede">
+      فرم را پر کنید؛ رزرو بلافاصله با شمارهٔ پیگیری در دفتر کافه ثبت می‌شود — بدون پیش‌پرداخت.
+    </p>
+  </section>
+
+  <div class="storage-banner" id="storage-banner" hidden>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+    <p id="storage-banner-text"></p>
+  </div>
+
+  <div class="res-grid">
+    <div>
+      <form class="booking-form" id="booking-form" novalidate>
+        <div class="field">
+          <label for="bk-name">نام و نام خانوادگی <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="bk-name" name="name" dir="auto" autocomplete="name"
+                 required minlength="2" maxlength="60" placeholder="مثلاً سارا محمدی"
+                 aria-required="true" aria-describedby="err-name" />
+          <p class="field-error" id="err-name" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="bk-phone">شمارهٔ موبایل <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="bk-phone" name="phone" dir="ltr" inputmode="tel"
+                 autocomplete="tel" required placeholder="0912 123 4567"
+                 aria-required="true" aria-describedby="err-phone" />
+          <p class="field-error" id="err-phone" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="bk-date">تاریخ <span class="req" aria-hidden="true">*</span></label>
+          <input type="date" id="bk-date" name="date" dir="ltr" required
+                 aria-required="true" aria-describedby="bk-date-hint err-date" />
+          <p class="hint" id="bk-date-hint" hidden></p>
+          <p class="field-error" id="err-date" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="bk-time">ساعت <span class="req" aria-hidden="true">*</span></label>
+          <input type="time" id="bk-time" name="time" dir="ltr" required
+                 min="08:00" max="23:00" aria-required="true" aria-describedby="err-time" />
+          <p class="hint">بین ۸:۰۰ صبح تا ۱۱:۰۰ شب</p>
+          <p class="field-error" id="err-time" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="bk-guests">تعداد نفرات <span class="req" aria-hidden="true">*</span></label>
+          <select id="bk-guests" name="guests" required aria-required="true" aria-describedby="err-guests">
+            <option value="" selected disabled>انتخاب کنید…</option>
+          </select>
+          <p class="field-error" id="err-guests" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="bk-notes">یادداشت (اختیاری)</label>
+          <input type="text" id="bk-notes" name="notes" dir="auto" maxlength="300"
+                 placeholder="مثلاً: کنار پنجره، صندلی راحت، تولد…" aria-describedby="err-notes" />
+          <p class="field-error" id="err-notes" role="alert" hidden></p>
+        </div>
+
+        <div class="form-level-error field-wide" id="form-level-error" role="alert" hidden style="grid-column: 1 / -1;"></div>
+
+        <div class="field field-wide">
+          <button type="submit" class="btn btn-primary btn-block" id="submit-btn">ثبت رزرو</button>
+        </div>
+      </form>
+
+      <div class="booking-success" id="booking-success" aria-live="polite" hidden style="margin-top: var(--space-l);">
+        <h3>رزرو شما ثبت شد.</h3>
+        <div class="ref">
+          <span class="code" id="success-id"></span>
+          <span class="created" id="success-created"></span>
+        </div>
+        <dl>
+          <dt>نام</dt><dd id="success-name"></dd>
+          <dt>تاریخ</dt><dd id="success-date"></dd>
+          <dt>ساعت</dt><dd id="success-time"></dd>
+          <dt>تعداد نفرات</dt><dd id="success-guests"></dd>
+        </dl>
+        <p class="demo-note" id="success-demo-note" hidden>
+          حالت پیش‌نمایش: این رزرو فقط در حافظهٔ مرورگر شما ذخیره شده است.
+          برای ثبت دائمی در پایگاه دادهٔ کافه، پروژه را با سرور محلی اجرا کنید (راهنما در README).
+        </p>
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" id="success-reset">ثبت رزرو جدید</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="res-aside" aria-label="اطلاعات رزرو">
+      <div>
+        <h3>ساعت کاری</h3>
+        <ul id="res-hours"></ul>
+      </div>
+      <div>
+        <h3>تماس</h3>
+        <ul id="res-contact"></ul>
+      </div>
+      <p class="note" id="res-note"></p>
+      <p class="note">مدیر کافه هستید؟ <a class="text-link" href="/admin">دفتر رزروها ←</a></p>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h2 class="kicker">کافه <span class="gold">دانه.</span></h2>
+      <p class="colophon" id="footer-colophon"></p>
+    </div>
+    <div>
+      <h4>صفحه‌ها</h4>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/shop">فروشگاه</a></li>
+        <li><a href="/reservation">رزرو میز</a></li>
+        <li><a href="/about">درباره و آدرس</a></li>
+        <li><a href="/admin">دفتر رزروها <small>صفحهٔ مدیریت کافه</small></a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تماس</h4>
+      <ul id="footer-contact"></ul>
+    </div>
+    <div>
+      <h4>ساعت کاری</h4>
+      <ul id="footer-hours"></ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span><b>کافه دانه</b> · تهران · <span id="legal-year"></span></span>
+    <span>شب، اسپرسو و کمی طلا</span>
+  </div>
+</footer>
+
+<script src="/js/site-data.js"></script>
+<script src="/js/jalali.js"></script>
+<script src="/js/cart-core.js"></script>
+<script src="/js/site-common.js"></script>
+<script src="/js/reservation.js"></script>
+</body>
+</html>
